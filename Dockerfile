@@ -7,4 +7,10 @@ ENTRYPOINT apachectl -D FOREGROUND
 VOLUME ["/iccpinfotech"]
 EXPOSE 100
 CMD [ "apache2","start" ]
+# For Node.js-based frontend/backend apps
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["npm", "start"]
 
