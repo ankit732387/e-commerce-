@@ -1,18 +1,18 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('iccp-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('ankit-dockerhub')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/iccpnorthindia/jenkinproject2024.git'
+            git 'https://github.com/ankit732387/e-commerce-.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t iccpinfotech/iccpnew:$BUILD_NUMBER .'
+                sh 'docker build -t ankit732387/ecommerce:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push iccpinfotech/iccpnew:$BUILD_NUMBER'
+                sh 'docker push ankit732387/ecommerce:$BUILD_NUMBER'
             }
         }
 }
